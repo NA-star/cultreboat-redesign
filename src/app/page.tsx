@@ -10,6 +10,7 @@ interface StatItem {
 }
 
 interface ServiceItem {
+  code: string;
   icon: string;
   title: string;
   desc: string;
@@ -25,28 +26,32 @@ const stats: StatItem[] = [
 
 const services: ServiceItem[] = [
   {
+    code: "01",
     icon: "✒️",
     title: "UI/UX Design",
     desc: "Intuitive & Impactful",
-    accent: "rgba(99, 102, 241, 0.2)",
+    accent: "rgba(99, 102, 241, 0.22)",
   },
   {
+    code: "02",
     icon: "💻",
     title: "Web Development",
     desc: "Fast & Scalable",
-    accent: "rgba(56, 189, 248, 0.2)",
+    accent: "rgba(56, 189, 248, 0.22)",
   },
   {
+    code: "03",
     icon: "✦",
     title: "Brand Design",
     desc: "Timeless Identity",
-    accent: "rgba(168, 85, 247, 0.2)",
+    accent: "rgba(168, 85, 247, 0.22)",
   },
   {
+    code: "04",
     icon: "🧭",
     title: "Digital Strategy",
     desc: "Grow with Purpose",
-    accent: "rgba(59, 130, 246, 0.2)",
+    accent: "rgba(59, 130, 246, 0.22)",
   },
 ];
 
@@ -56,6 +61,7 @@ export default function HomePage() {
       {/* 1. HERO SECTION */}
       <section className="home-hero">
         <div className="hero-bg-glow" aria-hidden="true" />
+        <div className="hero-bg-glow-alt" aria-hidden="true" />
         <div className="container home-hero-grid">
           <div className="home-hero-content">
             <div className="hero-pill">
@@ -92,11 +98,29 @@ export default function HomePage() {
                 Play Reel
               </a>
             </div>
+
+            <div className="hero-highlights">
+              <div className="hero-highlight-item">
+                <span className="highlight-label">ARCHITECTURE</span>
+                <strong>Design Systems &amp; Modern Web</strong>
+              </div>
+              <div className="hero-highlight-item">
+                <span className="highlight-label">DELIVERY</span>
+                <strong>Brand to Production Launch</strong>
+              </div>
+            </div>
           </div>
 
           {/* Right Hero Visual */}
           <div className="home-hero-visual">
             <div className="orbit-ring" aria-hidden="true" />
+            <div className="orbit-ring-inner" aria-hidden="true" />
+
+            <div className="hero-float-tag hero-tag-top">
+              <span className="tag-dot" />
+              <span>Visual Craft • Interactive UI</span>
+            </div>
+
             <div className="statue-frame">
               <Image
                 src="/images/hero-sculpture.jfif"
@@ -106,6 +130,15 @@ export default function HomePage() {
                 priority
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
+              <div className="statue-glass-caption">
+                <span>CULTREBOAT STUDIO</span>
+                <strong>Sculpting Digital Identity</strong>
+              </div>
+            </div>
+
+            <div className="hero-float-tag hero-tag-bottom">
+              <span>Multi-Device Precision</span>
+              <strong>Web • Mobile • Brand</strong>
             </div>
           </div>
         </div>
@@ -149,7 +182,11 @@ export default function HomePage() {
                 <br />
                 Innovate.
               </h4>
-              <Link href="/design" className="mini-arrow-btn">
+              <Link
+                href="/design"
+                className="mini-arrow-btn"
+                aria-label="Explore Cultreboat work"
+              >
                 ↗
               </Link>
             </div>
@@ -172,6 +209,17 @@ export default function HomePage() {
               dedicated to bringing bold ideas to life through design,
               innovation and technology.
             </p>
+
+            <div className="about-pillars">
+              <div className="about-pillar">
+                <strong>Intentional Design</strong>
+                <span>Clean visual systems built around human clarity</span>
+              </div>
+              <div className="about-pillar">
+                <strong>Engineering Rigor</strong>
+                <span>Responsive, fast, and maintainable execution</span>
+              </div>
+            </div>
 
             <Link href="/design" className="btn-primary-solid">
               Learn More <span>→</span>
@@ -210,13 +258,16 @@ export default function HomePage() {
                 className="service-glass-card"
                 key={service.title}
               >
-                <div
-                  className="service-icon-box"
-                  style={{ background: service.accent }}
-                >
-                  {service.icon}
+                <div className="service-card-top">
+                  <div
+                    className="service-icon-box"
+                    style={{ background: service.accent }}
+                  >
+                    {service.icon}
+                  </div>
+                  <span className="service-index">{service.code}</span>
                 </div>
-                <div>
+                <div className="service-card-body">
                   <h3>{service.title}</h3>
                   <p>{service.desc}</p>
                 </div>
